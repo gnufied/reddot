@@ -2,4 +2,5 @@ This presentation was done using a gem called showoff. You can access the presen
 in following ways:
 
 1. `gem install showoff` and navigate to cloned version of presentation and run `showoff serve`.
-2. 
+2. http://smooth-stream-6364.herokuapp.com
+
