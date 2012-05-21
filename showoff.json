@@ -1,0 +1,23 @@
+{ "name": "Dive inside Ruby 1.9", 
+  "sections": [ 
+      {"section":"intro"},
+      {
+          "section": "talk_intro"
+      },
+      {
+          "section": "language"
+      },
+      {
+          "section": "gc"
+      },
+      {
+          "section": "threading"
+      },
+      {
+          "section": "fibers"
+      },
+      {
+          "section": "thanks"
+      }
+  ]
+}

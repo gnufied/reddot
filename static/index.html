@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Dive inside Ruby 1.9</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="intro/01_slide/1">
+<h1>Dive inside Ruby 1.9</h1></div>
+</div><div class="slide" data-transition="none"><div class="content small bullets" ref="intro/01_slide/2">
+<ul>
+<li>@gnufied</li>
+<li>Co Founder - Codemancers <a href="http://codemancers.com">http://codemancers.com</a></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="talk_intro/01_slide/1">
+<h1>You know what</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="talk_intro/01_slide/2">
+<h1>Dive inside means</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="talk_intro/01_slide/3">
+<p><img src="./file/talk_intro/koala_sleeping.jpg" width="800" height="599" alt="koala_sleep"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="talk_intro/01_slide/4">
+<h1>It can also mean</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="talk_intro/01_slide/5">
+<p><img src="./file/talk_intro/drowning.jpg" width="646" height="392" alt="drowning"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="talk_intro/01_slide/6">
+<h1>The Agenda</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="talk_intro/01_slide/7">
+<ul>
+<li>Language</li>
+<li>GC and Object allocation</li>
+<li>Threading</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="language/language/1">
+<h1>Language Changes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="language/language/2">
+<h2>current directory is no longer in load path</h2>
+
+<pre class="sh_ruby"><code>require_relative</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smaller bullets" ref="language/language/3">
+<h1>instance_exec</h1>
+
+<ul>
+<li>instance_eval with arguments</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="language/language/4">
+<h1>Arity checking on lambda</h1>
+
+<pre class="sh_ruby"><code>def hello &amp;block
+  yield "hello"
+end
+
+ x = lambda { puts "ha ha" }
+ hello &amp;x</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="language/language/5">
+<h1>Blocks can accept block arguments</h1>
+
+<pre class="sh_ruby"><code>def hello &amp;block
+  block.call { puts "oh boi"}
+end
+
+hello { |&amp;b| puts "hi there" }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="language/language/6">
+<ul>
+<li>Encoding</li>
+<li>New lambda syntax</li>
+<li>New hash syntax</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/1">
+<h1>GC &amp; Object allocation Changes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="gc/gc/2">
+<h2>Never create Ruby strings longer than 23 characters</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/3">
+<pre class="sh_c"><code>struct RString {
+  struct RBasic basic;
+  long len;
+  char *ptr;
+  union {
+    long capa;
+    VALUE shared;
+  } aux;
+};</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/4">
+<pre class="sh_c"><code>struct RString {
+  struct RBasic basic;
+  union {
+    struct {
+      long len;
+      char *ptr;
+      union {
+        long capa;
+        VALUE shared;
+      } aux;
+    } heap;
+    char ary[RSTRING_EMBED_LEN_MAX + 1];
+  } as;
+};</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/5">
+<pre class="sh_c"><code>VALUE ary[RARRAY_EMBED_LEN_MAX];</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/6">
+<pre class="sh_c"><code>VALUE ary[ROBJECT_EMBED_LEN_MAX];</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/7">
+<p><img src="./file/gc/sleep.jpg" width="795" height="596" alt="sleep"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="gc/gc/8">
+<h2>Wake up</h2></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="gc/gc/9">
+<p><img src="./file/gc/angry_koala_python.jpg" width="500" height="412" alt="sleep"/></p>
+
+<p><em>reference to languages living or dead is accidental</em></p></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="gc/gc/10">
+<h2>Lazy sweep GC</h2>
+
+<ul>
+<li>Ruby has Mark &amp; Sweep garbage collector.</li>
+<li>Mark phases marks the active objects and sweep phase collects all the unmarked objects.</li>
+<li>Lazy sweep GC, sweeps only until it finds a free slot. It may mean bad worst case peformance.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="threading/threading/1">
+<h1>Threading</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="threading/threading/2">
+<h1>Ruby 1.8 had green threads</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="threading/threading/3">
+<h1>In MRI 1.8, all blocking calls are turned into non-blocking calls internally.</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="threading/threading/4">
+<pre class="sh_c"><code>    fd = fileno(fptr-&gt;f);
+    str = rb_tainted_str_new(0, buflen);
+retry:
+    rb_str_locktmp(str);
+    rb_thread_wait_fd(fd); // will call rb_thread_schedule
+    TRAP_BEG;
+    slen = recvfrom(fd, RSTRING(str)-&gt;ptr, buflen, flags, 
+      (struct sockaddr*)buf, &amp;alen);
+    TRAP_END;
+    rb_str_unlocktmp(str);</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="threading/threading/5">
+<h1>1.9 has native threads with GVL</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="threading/threading/6">
+<pre class="sh_c"><code>// socket.c
+#define BLOCKING_REGION(func, arg) 
+   (long)rb_thread_blocking_region((func),(arg), 
+     RUBY_UBF_IO, 0)
+
+// Blocking call for IO   
+BLOCKING_REGION(recvfrom_blocking, &amp;arg)) &lt; 0)
+
+// thread.c
+//
+VALUE rb_thread_blocking_region(
+     rb_blocking_function_t *func,
+     void *data1,rb_unblock_function_t *ubf, 
+     void *data2)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="threading/threading/7">
+<h1>1.9.3 introduced queuing GVL</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="threading/threading/8">
+<h1>Wake-up queued threads.The wake-up order is simple FIFO</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="thanks/thanks/1">
+<h1>Resources</h1>
+
+<ul>
+<li>Rubyinside 1.9 Walkthrough.</li>
+<li>Ruby hacker guide.</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="thanks/thanks/2">
+<h1>Thanks</h1>
+
+<ul>
+<li>http://github.com/gnufied/reddot</li>
+</ul>
+</div>
+</div></div>
+
+</body>
+</html>
